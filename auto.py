@@ -20,7 +20,10 @@ else:
 # if last_date < today:
 if True:
     # print("No commit today. Updating JSON...")
+    i = 0
     while(True):
+        print("i : ",i)
+        i += 1
         # Prevent duplicate entry
         if str(today) not in data["history"]:
             data["count"] += 1
@@ -39,5 +42,6 @@ if True:
                 print("Auto commit pushed.")
             except Exception as e:
                 print("Push failed:", e)
+    print("Finished")
 else:
     print("Commit already exists today. No action needed.")
