@@ -20,7 +20,7 @@ else:
 # if last_date < today:
 if True:
     # print("No commit today. Updating JSON...")
-    i = 0
+    i = data["count"]
     while(True):
         print("i : ",i,end='')
         i += 1
@@ -28,15 +28,15 @@ if True:
         # if str(today) not in data["history"]:
         if True:
             print("Inside If;")
-            data["count"] += 1
-            data["history"][0] = str(today)
+            data["count"] = i
+            data["history"][0] = str(i)
 
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
 
             # Commit changes
             repo.git.add(file_path)
-            #repo.index.commit(f"{today}")
+            repo.index.commit(f"{i}")
 
             try:
                 origin = repo.remote(name="origin")
