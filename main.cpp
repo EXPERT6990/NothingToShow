@@ -12,7 +12,7 @@ int main() {
     system("git add file.txt");
     string cmd = "git commit -m \"commit " + to_string(i) + "\"";
     system(cmd.c_str());
-    cmd = "git push origin master";
+    cmd = "git push origin main";
     system(cmd.c_str());
     this_thread::sleep_for(chrono::seconds(3));
    }
