@@ -29,14 +29,14 @@ if True:
         if True:
             print("Inside If;")
             data["count"] += 1
-            data["history"].append(str(today))
+            data["history"][0] = str(today)
 
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
 
             # Commit changes
             repo.git.add(file_path)
-            repo.index.commit(f"Auto commit: inactivity logged for {today}")
+            #repo.index.commit(f"{today}")
 
             try:
                 origin = repo.remote(name="origin")
