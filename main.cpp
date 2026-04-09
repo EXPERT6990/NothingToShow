@@ -14,7 +14,7 @@ int main() {
     system(cmd.c_str());
     cmd = "git push origin master";
     system(cmd.c_str());
-    this_thread::sleep_for(chrono::milliseconds(1));
+    this_thread::sleep_for(chrono::seconds(3));
    }
     return 0;
 }
