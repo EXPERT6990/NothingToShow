@@ -2,6 +2,7 @@ from git import Repo
 from datetime import datetime
 import json
 import os
+import subprocess
 
 repo = Repo(".")
 file_path = "./AutoCommitHistory.json"
@@ -35,15 +36,23 @@ if True:
                 json.dump(data, f, indent=4)
 
             # Commit changes
-            repo.git.add(file_path)
-            repo.index.commit(f"{i}")
+            subprocess.run(["git", "add", file_path], check=True)
+            subprocess.run(["git", "commit", "-m", f"{i}"], check=True)
 
+            # # Push only every 10 commits to speed up
+            # if i % 10 == 0:
+            #     try:
+            #         subprocess.run(["git", "push", "origin", "main"], check=True)
+            #         print("Auto commit pushed.")
+            #     except subprocess.CalledProcessError as e:
+            #         print("Push failed:", e)
+            # Push remaining commits at the end
+            
             try:
-                origin = repo.remote(name="origin")
-                origin.push()
-                print("Auto commit pushed.")
-            except Exception as e:
-                print("Push failed:", e)
+                subprocess.run(["git", "push", "origin", "main"], check=True)
+                print("Final push completed.")
+            except subprocess.CalledProcessError as e:
+                print("Final push failed:", e)
     print("Finished")
 else:
     print("Commit already exists today. No action needed.")
