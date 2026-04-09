@@ -4,7 +4,7 @@ import json
 import os
 
 repo = Repo(".")
-file_path = "AutoCommitHistory.json"
+file_path = "./AutoCommitHistory.json"
 
 # Get last commit date
 last_commit = repo.head.commit
