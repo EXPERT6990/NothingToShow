@@ -22,10 +22,12 @@ if True:
     # print("No commit today. Updating JSON...")
     i = 0
     while(True):
-        print("i : ",i)
+        print("i : ",i,end='')
         i += 1
         # Prevent duplicate entry
-        if str(today) not in data["history"]:
+        # if str(today) not in data["history"]:
+        if True:
+            print("Inside If;")
             data["count"] += 1
             data["history"].append(str(today))
 
