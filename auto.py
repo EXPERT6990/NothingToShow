@@ -34,7 +34,7 @@ if True:
 
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
-
+            print("JSON updated with count:", i)
             # Commit changes
             subprocess.run(["git", "add", file_path], check=True)
             subprocess.run(["git", "commit", "-m", f"{i}"], check=True)
